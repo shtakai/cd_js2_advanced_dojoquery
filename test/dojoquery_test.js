@@ -1,5 +1,6 @@
 var assert = require('assert');
 var expect = require('chai').expect;
+var cheerio = require('cheerio');
 
 var $Dojoquery = require('../lib/dojoquery');
 
@@ -11,9 +12,17 @@ describe('dojoquery', function(){
   before(function(){
 
   })
-  it('test', function(){
-    console.log($Dojoquery('test'));
-    expect($Dojoquery('test').el).to.be.eql('test');
+
+  it('create element with button -> <button></button>', function(){
+    //console.log($Dojoquery('button');
+   expect($Dojoquery('button').html()).to.match(/<button><\/button>/);
   });
 
+  it('respond to click', function(){
+     expect($Dojoquery('button')).to.respondTo('click');
+  });
+
+  it('respond to hover', function(){
+     expect($Dojoquery('button')).to.respondTo('hover');
+  });
 });
